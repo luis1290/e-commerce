@@ -1,5 +1,6 @@
 /* Carrito */
 
+
 // #1 Base de datos
 const db = [
   {
@@ -82,15 +83,13 @@ function printCart() {
         </div>
 
         <div class="cart__details">
-          <h3 class="cart__title">${product.name} <span class="cart__price">$${
-      product.price
-    }</span></h3>
+          <h3 class="cart__title">${product.name} <span class="cart__price">$${product.price
+      }</span></h3>
 
           <div class="cart__amount">
             <div class="cart__amount-content">
-              <span class="cart__amount-box removeToCart" data-id="${
-                product.id
-              }">
+              <span class="cart__amount-box removeToCart" data-id="${product.id
+      }">
                 <i class="bx bx-minus"></i>
               </span>
 
@@ -101,18 +100,15 @@ function printCart() {
               </span>
             </div>
 
-            <i class="bx bx-trash-alt cart__amount-trash deleteToCart" data-id="${
-              product.id
-            }"></i>
+            <i class="bx bx-trash-alt cart__amount-trash deleteToCart" data-id="${product.id
+      }"></i>
             </div>
             
             <span class="cart__subtotal">
-            <span class="cart__stock">Quedan ${
-              product.quantity - article.qty
-            } unidades</span>
-            <span class="cart__subtotal-price">${
-              product.price * article.qty
-            }</span>
+            <span class="cart__stock">Quedan ${product.quantity - article.qty
+      } unidades</span>
+            <span class="cart__subtotal-price">${product.price * article.qty
+      }</span>
             </span>
             </div>
             </article>
@@ -137,13 +133,29 @@ function addToCart(id, qty = 1) {
       if (checkStock(id, qty + article.qty)) {
         article.qty++;
       } else {
-        window.alert("No hay stock suficiente");
+       
+        const modal = document.querySelector('.modal');
+        const closeModal = document.querySelector('.modal__close');
+        modal.classList.add('modal--show');
+        closeModal.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.classList.remove('modal--show');
+        });
+        // validaStock()
       }
     } else {
       cart.push({ id, qty });
     }
   } else {
-    window.alert("Producto agotado");
+    
+    const modalAgotado = document.querySelector('.modal__agotado');
+    const closeModalAgotado = document.querySelector('.modal__close-agotado');
+    modalAgotado.classList.add('modal--show-agotado');
+    closeModalAgotado.addEventListener('click', (e) => {
+      e.preventDefault();
+      modalAgotado.classList.remove('modal--show-agotado');
+    });
+
   }
   printCart();
 }
@@ -183,7 +195,8 @@ function totalArticles() {
 // #8 El total
 function totalAmount() {
   return cart.reduce((acc, article) => {
-    /* Primero recorre los productos, la base de datos para traer las propiedades y luego busca al producto por su id y lo hace coincidir con el articulo, si lo encuntra multiplica el precio del producto por la cantidad de artículos del carrito*/
+    /* Primero recorre los productos, la base de datos para traer las propiedades y luego busca al producto por su id y lo hace 
+    coincidir con el articulo, si lo encuntra multiplica el precio del producto por la cantidad de artículos del carrito*/
     const product = products.find((p) => p.id === article.id);
     return acc + product.price * article.qty;
   }, 0);
@@ -205,7 +218,14 @@ function checkout() {
   clearCart();
   printProducts();
   printCart();
-  window.alert("Gracias por su compra");
+  const modalCompra = document.querySelector('.modal__compra');
+  const closeModalCompra = document.querySelector('.modal__close-compra');
+  modalCompra.classList.add('modal--show-compra');
+  
+  closeModalCompra.addEventListener('click', (e) => {
+    e.preventDefault();
+    modalCompra.classList.remove('modal--show-compra');
+  });
 }
 
 function checkButtons() {
