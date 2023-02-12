@@ -212,6 +212,9 @@ body.dark-theme {
 .load svg {
   fill: var(--first-color);
   width: 100px;
+  background-color: var( --first-color);
+  padding: 20px;
+  border-radius: 50%;
   animation: scroll 1.5s infinite;
 }
 
