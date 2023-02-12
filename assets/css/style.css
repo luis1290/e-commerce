@@ -584,6 +584,7 @@ body.dark-theme {
 
 .home__img-bg {
   background-color: var(--first-color);
+  padding: 20px;
   width: 258px;
   height: 430px;
   border-radius: 0 0 12px 12px;

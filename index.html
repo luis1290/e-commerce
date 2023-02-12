@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Academlo Shop</title>
+  <title>experto PC Shop</title>
   <!--=============== FAVICON ===============-->
   <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
   <!--=============== BOXICONS ===============-->
@@ -49,6 +49,7 @@
           </g>
         </svg> Shop
       </a>
+
 
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__list">
@@ -140,22 +141,22 @@
     <section class="home" id="home">
       <div class="home__container container grid">
         <div class="home__img-bg">
-          <img src="assets/img/home.png" alt="" class="home__img">
+          <img src="assets/img/GPU/gigabyte-geforce-rtx-3080-gaming-oc-12-gb-oem.jpg" alt="" class="home__img">
         </div>
 
         <div class="home__data">
-          <h1 class="home__title">Nueva Sudadera <br> COLECCIONES 2023</h1>
+          <h1 class="home__title">Grafica RTX3080 Gaming OC <br> Gigabyte</h1>
           <p class="home__description">
-            La nueva sudadera Hanes Midweight Crewneck importada de la serie 2022, con un moderno diseño.
+            La RTX 3080 OC de Gigabyte es una de la serie de tarjetas gráficas de alto rendimiento de Nvidia
           </p>
-          <span class="home__price">$750.00</span>
+          <span class="home__price">$1,500.00</span>
 
           <div class="home__btns">
             <a href="#" class="button button--transparent button--small">
               Descubrir
             </a>
 
-            <button class="button home__button">AÑADIR AL CARRITO</button>
+            <button class="button home__button addToCartGPU" data-id="3">AÑADIR AL CARRITO</button>
           </div>
         </div>
       </div>
@@ -176,7 +177,7 @@
 
           <li class="products__item products__line active-product" data-filter=".hoodies">
             <h3 class="products__title">
-              Camisas
+              Procesadores
             </h3>
             <span class="products__stock">
               3 productos
@@ -185,7 +186,7 @@
 
           <li class="products__item products__line" data-filter=".shirts">
             <h3 class="products__title">
-              Playeras
+              Tarjetas Madres
             </h3>
             <span class="products__stock">
               4 productos
@@ -194,7 +195,7 @@
 
           <li class="products__item" data-filter=".sweatshirts">
             <h3 class="products__title">
-              Sudaderas
+              Graficas
             </h3>
             <span class="products__stock">
               4 productos
@@ -224,14 +225,12 @@
         </div>
       </div>
     </section>
-
   </main>
-
   <!--inicio modal-->
-  
+
   <!-- seccion modal fuera de estock -->
   <section class="modal">
-   
+
     <div class="modal__container">
       <h2 class="modal__title">¡Error!</h2>
       <p class="modal__paragraph">Lo sentimos ya no tenemos stock de este producto</p>
@@ -239,8 +238,8 @@
     </div>
   </section>
 
-   <!-- seccion modal Gracias por tu compra -->
-   <section class="modal__compra">
+  <!-- seccion modal Gracias por tu compra -->
+  <section class="modal__compra">
     <div class="modal__container-compra">
       <h2 class="modal__title-compra">¡Felicidades!</h2>
       <p class="modal__paragraph-compra">Gracias por tu compra.</p>
@@ -248,15 +247,15 @@
     </div>
   </section>
 
-   <!-- seccion modal Producto Agotado -->
-   <section class="modal__agotado">
+  <!-- seccion modal Producto Agotado -->
+  <section class="modal__agotado">
     <div class="modal__container-agotado">
       <h2 class="modal__title-agotado">¡Error!</h2>
       <p class="modal__paragraph-agotado">Lo sentimos el producto esta agotado</p>
       <a href="#" class="modal__close-agotado">Cerrar</a>
     </div>
   </section>
-<!-- fin de los modales -->
+  <!-- fin de los modales -->
   <!--Fin de Ventana Modal-->
   <!--==================== FOOTER ====================-->
   <footer class="footer section">
@@ -292,13 +291,13 @@
 
         <ul class="footer__links">
           <li>
-            <a href="#" class="footer__link">Camisas</a>
+            <a href="#" class="footer__link">Procesadores</a>
           </li>
           <li>
-            <a href="#" class="footer__link">Playeras</a>
+            <a href="#" class="footer__link">Tarjetas Madres</a>
           </li>
           <li>
-            <a href="#" class="footer__link">Sudaderas</a>
+            <a href="#" class="footer__link">Graficas</a>
           </li>
         </ul>
       </div>
@@ -321,7 +320,6 @@
         </ul>
       </div>
     </div>
-
     <span class="footer__copy">&#169; ACADEMLO SHOP. Todos los derechos reservados</span>
   </footer>
 
