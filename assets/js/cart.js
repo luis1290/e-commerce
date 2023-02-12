@@ -5,25 +5,25 @@
 const db = [
   {
     id: 1,
-    name: "Camisa",
+    name: "ryzen-9-7900",
     price: 456,
-    image: "assets/img/featured1.png",
+    image: "assets/img/cpu/amd-ryzen-9-7900.jpg",
     category: "hoodies",
     quantity: 5,
   },
   {
     id: 2,
-    name: "Playera",
+    name: "asus-prime-b650m",
     price: 789,
-    image: "assets/img/featured2.png",
+    image: "assets/img/tm/asus-prime-b650m-a-wifi.jpg",
     category: "shirts",
     quantity: 7,
   },
   {
     id: 3,
-    name: "Sudadera",
-    price: 123,
-    image: "assets/img/featured3.png",
+    name: "geforce-rtx-3080-gaming-oc-12-gb",
+    price: 1500,
+    image: "assets/img/GPU/gigabyte-geforce-rtx-3080-gaming-oc-12-gb-oem.jpg",
     category: "swetshirts",
     quantity: 4,
   },
@@ -35,6 +35,8 @@ const products = window.localStorage.getItem("productsDB")
 
 // #2 Pintar los productos en el DOM
 const productContainer = document.getElementById("products__content");
+const productGpu = document.getElementById("home");
+
 function printProducts() {
   let html = "";
   for (const product of products) {
@@ -62,6 +64,9 @@ function printProducts() {
 }
 
 printProducts();
+
+
+
 
 // #3 Carrito
 let cart = window.localStorage.getItem("cartDB")
@@ -122,6 +127,8 @@ function printCart() {
   window.localStorage.setItem('cartDB', JSON.stringify(cart))
 }
 
+
+// const gpuContainer = document.getElementById("cart__container");
 printCart();
 // #4 Agragar al carrito
 function addToCart(id, qty = 1) {
@@ -133,7 +140,7 @@ function addToCart(id, qty = 1) {
       if (checkStock(id, qty + article.qty)) {
         article.qty++;
       } else {
-       
+
         const modal = document.querySelector('.modal');
         const closeModal = document.querySelector('.modal__close');
         modal.classList.add('modal--show');
@@ -146,7 +153,7 @@ function addToCart(id, qty = 1) {
       cart.push({ id, qty });
     }
   } else {
-    
+
     const modalAgotado = document.querySelector('.modal__agotado');
     const closeModalAgotado = document.querySelector('.modal__close-agotado');
     modalAgotado.classList.add('modal--show-agotado');
@@ -220,7 +227,7 @@ function checkout() {
   const modalCompra = document.querySelector('.modal__compra');
   const closeModalCompra = document.querySelector('.modal__close-compra');
   modalCompra.classList.add('modal--show-compra');
-  
+
   closeModalCompra.addEventListener('click', (e) => {
     e.preventDefault();
     modalCompra.classList.remove('modal--show-compra');
@@ -255,6 +262,17 @@ productContainer.addEventListener("click", function (e) {
     addToCart(id);
   }
 });
+
+// agregar al carrito GPU 
+productGpu.addEventListener("click", function (e) {
+  const add = e.target.closest(".addToCartGPU");
+
+  if (add) {
+    const id = +add.dataset.id;
+    addToCart(id);
+  }
+});
+
 
 cartContainer.addEventListener("click", function (e) {
   const remove = e.target.closest(".removeToCart");
