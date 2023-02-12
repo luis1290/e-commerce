@@ -141,7 +141,6 @@ function addToCart(id, qty = 1) {
           e.preventDefault();
           modal.classList.remove('modal--show');
         });
-        // validaStock()
       }
     } else {
       cart.push({ id, qty });
