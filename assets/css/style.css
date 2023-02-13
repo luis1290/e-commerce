@@ -807,7 +807,12 @@ body.dark-theme {
 
 .footer__social-link {
   font-size: 1.25rem;
-  color: var(--text-color);
+  color: var(--text-color);  
+}
+
+.bx {
+  border-radius: 10px;
+  color: #F26250;
 }
 
 .footer__social-link:hover {
