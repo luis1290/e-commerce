@@ -153,13 +153,14 @@ function addToCart(id, qty = 1) {
       cart.push({ id, qty });
     }
   } else {
-    const modalExhausted = document.querySelector('.modal__exhausted');
-    const closeModalExhausted = document.querySelector('.modal__close-exhausted');
-    modalExhausted.classList.add('modal--show-exhausted');
-    closeModalExhausted.addEventListener('click', (e) => {
-      e.preventDefault();
-      closeModalExhausted.classList.remove('modal--show-exhausted');
-    });
+   
+    const modal = document.querySelector('.modal__exhausted');
+        const closeModal = document.querySelector('.modal__close-exhausted');
+        modal.classList.add('modal--show-exhausted');
+        closeModal.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.classList.remove('modal--show-exhausted');
+        });
   }
   printCart();
 }
@@ -222,13 +223,14 @@ function checkout() {
   clearCart();
   printProducts();
   printCart();
-  const modalCompra = document.querySelector('.modal__compra');
-  const closeModalCompra = document.querySelector('.modal__close-compra');
-  modalCompra.classList.add('modal--show-compra');
+  
+  const modalBuys = document.querySelector('.modal__buys');
+  const closeModalBuys = document.querySelector('.modal__close-buys');
+  modalBuys.classList.add('modal--show-buys');
 
-  closeModalCompra.addEventListener('click', (e) => {
+  closeModalBuys.addEventListener('click', (e) => {
     e.preventDefault();
-    modalCompra.classList.remove('modal--show-compra');
+    modalBuys.classList.remove('modal--show-buys');
   });
 }
 
