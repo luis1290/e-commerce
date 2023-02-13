@@ -7,7 +7,7 @@ const db = [
     id: 1,
     name: "ryzen-9-7900",
     price: 456,
-    image: "assets/img/cpu/amd-ryzen-9-7900.jpg",
+    image: "assets/img/cpu/amd-ryzen-9-7900.png",
     category: "Procesador",
     quantity: 5,
   },

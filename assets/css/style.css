@@ -474,6 +474,7 @@ body.dark-theme {
   display: inline-flex;
   align-items: center;
   column-gap: .25rem;
+  gap: 1rem;
 }
 
 .nav__logo-icon {
