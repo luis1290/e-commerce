@@ -199,6 +199,7 @@ function confirmRemove() {
 
 // #5 Remover articulos
 
+
 function removeFromCart(id, qty = 1) {
   const article = cart.find((a) => a.id === id);
 
@@ -213,8 +214,6 @@ function removeFromCart(id, qty = 1) {
 
   printCart();
 }
-
-
 
 // #6 Eliminar del carrito
 function deleteFromCart(id) {
@@ -303,7 +302,6 @@ productGpu.addEventListener("click", function (e) {
     addToCart(id);
   }
 });
-
 
 cartContainer.addEventListener("click", function (e) {
   const remove = e.target.closest(".removeToCart");
