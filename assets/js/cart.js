@@ -8,7 +8,7 @@ const db = [
     name: "ryzen-9-7900",
     price: 456,
     image: "assets/img/cpu/amd-ryzen-9-7900.jpg",
-    category: "hoodies",
+    category: "Procesador",
     quantity: 5,
   },
   {
@@ -16,7 +16,7 @@ const db = [
     name: "asus-prime-b650m",
     price: 789,
     image: "assets/img/tm/asus-prime-b650m-a-wifi.jpg",
-    category: "shirts",
+    category: "tm",
     quantity: 7,
   },
   {
@@ -24,7 +24,7 @@ const db = [
     name: "geforce-rtx-3080-gaming-oc-12-gb",
     price: 1500,
     image: "assets/img/GPU/gigabyte-geforce-rtx-3080-gaming-oc-12-gb-oem.jpg",
-    category: "swetshirts",
+    category: "gpu",
     quantity: 4,
   },
 ];
@@ -153,15 +153,13 @@ function addToCart(id, qty = 1) {
       cart.push({ id, qty });
     }
   } else {
-
-    const modalAgotado = document.querySelector('.modal__agotado');
-    const closeModalAgotado = document.querySelector('.modal__close-agotado');
-    modalAgotado.classList.add('modal--show-agotado');
-    closeModalAgotado.addEventListener('click', (e) => {
+    const modalExhausted = document.querySelector('.modal__exhausted');
+    const closeModalExhausted = document.querySelector('.modal__close-exhausted');
+    modalExhausted.classList.add('modal--show-exhausted');
+    closeModalExhausted.addEventListener('click', (e) => {
       e.preventDefault();
-      modalAgotado.classList.remove('modal--show-agotado');
+      closeModalExhausted.classList.remove('modal--show-exhausted');
     });
-
   }
   printCart();
 }
