@@ -8,16 +8,16 @@ const db = [
     name: "ryzen-9-7900",
     price: 456,
     image: "assets/img/cpu/amd-ryzen-3-3200g-oem.png",
-    category: "Procesador",
-    quantity: 5,
+    category: "cpu",
+    quantity: 1,
   },
   {
     id: 2,
     name: "asus-prime-b650m",
     price: 789,
     image: "assets/img/tm/asus-prime-b650m-a-wifi.png",
-    category: "tm",
-    quantity: 7,
+    category: "motherCard",
+    quantity: 4,
   },
   {
     id: 3,
@@ -313,7 +313,7 @@ actionButtons.addEventListener("click", function (e) {
 const btnAll = document.getElementById('all')
 const btnCpu = document.getElementById('cpu')
 const btnMotherCard = document.getElementById('motherCard')
-const btnGraphics = document.getElementById('graphics')
+const btnGraphics = document.getElementById('gpu')
 const productsContent = document.getElementById('products__content')
 
 btnAll.addEventListener('click', ()=>{
@@ -322,7 +322,7 @@ btnAll.addEventListener('click', ()=>{
 
 btnCpu.addEventListener('click', ()=>{
     let html = ''
-    const cpu = products.filter(product => product.category === 'Procesador')
+    const cpu = products.filter(product => product.category === 'cpu')
     for (const product of cpu) {
       html += `
       <article class="products__card hoodies">
@@ -348,7 +348,7 @@ btnCpu.addEventListener('click', ()=>{
 
 btnMotherCard.addEventListener('click', ()=>{
     let html = ''
-    const tm = products.filter(product => product.category === 'tm')
+    const tm = products.filter(product => product.category === 'motherCard')
     for (const product of tm) {
       html += `
       <article class="products__card hoodies">
