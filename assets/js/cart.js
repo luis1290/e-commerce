@@ -7,7 +7,7 @@ const db = [
     id: 1,
     name: "ryzen-9-7900",
     price: 456,
-    image: "assets/img/cpu/amd-ryzen-9-7900.png",
+    image: "assets/img/cpu/amd-ryzen-3-3200g-oem.png",
     category: "Procesador",
     quantity: 5,
   },
@@ -26,7 +26,7 @@ const db = [
     image: "assets/img/GPU/gigabyte-geforce-rtx-3080-gaming-oc-12-gb-oem.png",
     category: "gpu",
     quantity: 4,
-  },
+  }
 ];
 
 const products = window.localStorage.getItem("productsDB")
@@ -307,3 +307,93 @@ actionButtons.addEventListener("click", function (e) {
     checkout();
   }
 });
+
+//Buscar por categoria 
+
+const btnAll = document.getElementById('all')
+const btnCpu = document.getElementById('cpu')
+const btnMotherCard = document.getElementById('motherCard')
+const btnGraphics = document.getElementById('graphics')
+const productsContent = document.getElementById('products__content')
+
+btnAll.addEventListener('click', ()=>{
+  printProducts()
+})
+
+btnCpu.addEventListener('click', ()=>{
+    let html = ''
+    const cpu = products.filter(product => product.category === 'Procesador')
+    for (const product of cpu) {
+      html += `
+      <article class="products__card hoodies">
+        <div class="products__shape">
+          <img src="${product.image}" alt="${product.name}" class="products__img">
+        </div>
+
+        <div class="products__data">
+          <h2 class="products__name">${product.name}</h2>
+          <div class="">
+            <h3 class="products__price">$${product.price}</h3>
+            <span class="products__quantity">Quedan solo ${product.quantity} unidades</span>
+          </div>
+          <button type="button" class="button products__button addToCart" data-id="${product.id}">
+            <i class="bx bx-plus"></i>
+          </button>
+        </div>
+      </article>
+    `
+    }
+    productContainer.innerHTML = html
+})
+
+btnMotherCard.addEventListener('click', ()=>{
+    let html = ''
+    const tm = products.filter(product => product.category === 'tm')
+    for (const product of tm) {
+      html += `
+      <article class="products__card hoodies">
+        <div class="products__shape">
+          <img src="${product.image}" alt="${product.name}" class="products__img">
+        </div>
+
+        <div class="products__data">
+          <h2 class="products__name">${product.name}</h2>
+          <div class="">
+            <h3 class="products__price">$${product.price}</h3>
+            <span class="products__quantity">Quedan solo ${product.quantity} unidades</span>
+          </div>
+          <button type="button" class="button products__button addToCart" data-id="${product.id}">
+            <i class="bx bx-plus"></i>
+          </button>
+        </div>
+      </article>
+    `
+    }
+    productContainer.innerHTML = html
+})
+
+btnGraphics.addEventListener('click', ()=>{
+  let html = ''
+  const gpu = products.filter(product => product.category === 'gpu')
+  for (const product of gpu) {
+    html += `
+    <article class="products__card hoodies">
+      <div class="products__shape">
+        <img src="${product.image}" alt="${product.name}" class="products__img">
+      </div>
+
+      <div class="products__data">
+        <h2 class="products__name">${product.name}</h2>
+        <div class="">
+          <h3 class="products__price">$${product.price}</h3>
+          <span class="products__quantity">Quedan solo ${product.quantity} unidades</span>
+        </div>
+        <button type="button" class="button products__button addToCart" data-id="${product.id}">
+          <i class="bx bx-plus"></i>
+        </button>
+      </div>
+    </article>
+  `
+  }
+  productContainer.innerHTML = html 
+})
