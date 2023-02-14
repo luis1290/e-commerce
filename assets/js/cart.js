@@ -200,20 +200,35 @@ function confirmRemove() {
 // #5 Remover articulos
 
 
+
 function removeFromCart(id, qty = 1) {
   const article = cart.find((a) => a.id === id);
 
   if (article && article.qty - qty > 0) {
     article.qty--;
   } else {
-    // const confirm = window.confirm("Estás Seguro??");
-    if (confirm) {
-      cart = cart.filter((a) => a.id !== id);
-    }
-  }
 
+    const confirm =
+      Swal.fire({
+        title: '¡Advertencia!',
+        text: "¿Estas seguro de eliminar este articulo?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: '¡No, Eliminar!',
+        confirmButtonText: '¡Si, Eliminar!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          cart = cart.filter((a) => a.id !== id);
+           deleteFromCart(id);
+        }
+      });
+  }
   printCart();
 }
+
+
 
 // #6 Eliminar del carrito
 function deleteFromCart(id) {
@@ -303,6 +318,7 @@ productGpu.addEventListener("click", function (e) {
   }
 });
 
+
 cartContainer.addEventListener("click", function (e) {
   const remove = e.target.closest(".removeToCart");
   const add = e.target.closest(".addToCart");
@@ -310,20 +326,22 @@ cartContainer.addEventListener("click", function (e) {
 
   if (remove) {
     const id = +remove.dataset.id;
-    Swal.fire({
-      title: '¡Advertencia!',
-      text: "¿Estas seguro de eliminar este articulo?",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: '¡Si, Eliminar!',
-      cancelButtonText: '¡No, Eliminar!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        removeFromCart(id);
-      }
-    })
+    removeFromCart(id);
+    // Swal.fire({
+    //   title: '¡Advertencia!',
+    //   text: "¿Estas seguro de eliminar este articulo?",
+    //   icon: 'warning',
+    //   showCancelButton: true,
+    //   confirmButtonColor: '#3085d6',
+    //   cancelButtonColor: '#d33',
+    //   confirmButtonText: '¡Si, Eliminar!',
+    //   cancelButtonText: '¡No, Eliminar!'
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+    //     removeFromCart(id);
+    //   }
+    // })
+    // removeFromCart(id);
   }
 
   if (add) {
