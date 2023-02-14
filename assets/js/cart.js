@@ -65,9 +65,6 @@ function printProducts() {
 
 printProducts();
 
-
-
-
 // #3 Carrito
 let cart = window.localStorage.getItem("cartDB")
   ? JSON.parse(window.localStorage.getItem("cartDB"))
@@ -126,7 +123,6 @@ function printCart() {
   checkButtons();
   window.localStorage.setItem('cartDB', JSON.stringify(cart))
 }
-
 
 // const gpuContainer = document.getElementById("cart__container");
 printCart();
@@ -196,11 +192,7 @@ function confirmRemove() {
   return confirm
 }
 
-
 // #5 Remover articulos
-
-
-
 function removeFromCart(id, qty = 1) {
   const article = cart.find((a) => a.id === id);
 
@@ -227,8 +219,6 @@ function removeFromCart(id, qty = 1) {
   }
   printCart();
 }
-
-
 
 // #6 Eliminar del carrito
 function deleteFromCart(id) {
@@ -327,21 +317,6 @@ cartContainer.addEventListener("click", function (e) {
   if (remove) {
     const id = +remove.dataset.id;
     removeFromCart(id);
-    // Swal.fire({
-    //   title: '¡Advertencia!',
-    //   text: "¿Estas seguro de eliminar este articulo?",
-    //   icon: 'warning',
-    //   showCancelButton: true,
-    //   confirmButtonColor: '#3085d6',
-    //   cancelButtonColor: '#d33',
-    //   confirmButtonText: '¡Si, Eliminar!',
-    //   cancelButtonText: '¡No, Eliminar!'
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     removeFromCart(id);
-    //   }
-    // })
-    // removeFromCart(id);
   }
 
   if (add) {
