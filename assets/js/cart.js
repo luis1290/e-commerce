@@ -199,7 +199,6 @@ function removeFromCart(id, qty = 1) {
   if (article && article.qty - qty > 0) {
     article.qty--;
   } else {
-
     const confirm =
       Swal.fire({
         title: '¡Advertencia!',
@@ -213,7 +212,7 @@ function removeFromCart(id, qty = 1) {
       }).then((result) => {
         if (result.isConfirmed) {
           cart = cart.filter((a) => a.id !== id);
-           deleteFromCart(id);
+          printCart();
         }
       });
   }
