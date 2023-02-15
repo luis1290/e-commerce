@@ -1220,12 +1220,6 @@ body.dark-theme {
   .footer__container {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  /* .products__filters {
-
-    grid-template-columns: auto;
-    justify-content: center;
-  } */
 }
 
 @media screen and (max-width: 766px) {
