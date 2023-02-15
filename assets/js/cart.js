@@ -443,7 +443,7 @@ btnAll.addEventListener('click', ()=>{
 
 btnCpu.addEventListener('click', ()=>{
     let html = ''
-    const cpu = products.filter(product => product.category === 'cpu')
+    const cpu = products.filter(product => product.category === 'Procesador')
     for (const product of cpu) {
       html += `
       <article class="products__card hoodies">
@@ -469,7 +469,7 @@ btnCpu.addEventListener('click', ()=>{
 
 btnMotherCard.addEventListener('click', ()=>{
     let html = ''
-    const tm = products.filter(product => product.category === 'motherCard')
+    const tm = products.filter(product => product.category === 'tm')
     for (const product of tm) {
       html += `
       <article class="products__card hoodies">
