@@ -218,7 +218,7 @@ const db = [
     image: "assets/img/RAM/teamgroup-t-force-delta-tuf-rgb-8-gb-ddr4-3200.png",
     category: "ram",
     quantity: 24,
-  },  
+  },
   {
     id: 28,
     name: "asus-rog-strix-850w-80-plus-gold",
@@ -565,6 +565,7 @@ function removeFromCart(id, qty = 1) {
 
 // #6 Eliminar del carrito
 function deleteFromCart(id) {
+  Swal.fire('Any fool can use a computer')
   const article = cart.find((a) => a.id === id);
   cart.splice(cart.indexOf(article), 1);
   printCart();
@@ -668,7 +669,9 @@ cartContainer.addEventListener("click", function (e) {
   }
 
   if (deleteCart) {
+    Swal.fire('Any fool can use a computer')
     const id = +deleteCart.dataset.id;
+ 
     Swal.fire({
       title: '¡Advertencia!',
       text: "¿Estas seguro de eliminar este articulo?",
@@ -680,9 +683,9 @@ cartContainer.addEventListener("click", function (e) {
       confirmButtonText: '¡Si, Eliminar!'
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteFromCart(id);
+         deleteFromCart(id);
       }
-    })
+    });
   }
 });
 
@@ -693,7 +696,20 @@ actionButtons.addEventListener("click", function (e) {
   const buy = e.target.closest("#cart-checkout");
 
   if (clear) {
-    clearCart();
+    Swal.fire({
+      title: '¡Advertencia!',
+      text: "¿Estas seguro de eliminar este articulo?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: '¡No, Eliminar!',
+      confirmButtonText: '¡Si, Eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        clearCart();
+      }
+    });
   }
 
   if (buy) {
@@ -709,15 +725,15 @@ const btnMotherCard = document.getElementById('motherCard')
 const btnGraphics = document.getElementById('gpu')
 const productsContent = document.getElementById('products__content')
 
-btnAll.addEventListener('click', ()=>{
+btnAll.addEventListener('click', () => {
   printProducts()
 })
 
-btnCpu.addEventListener('click', ()=>{
-    let html = ''
-    const cpu = products.filter(product => product.category === 'Procesador')
-    for (const product of cpu) {
-      html += `
+btnCpu.addEventListener('click', () => {
+  let html = ''
+  const cpu = products.filter(product => product.category === 'Procesador')
+  for (const product of cpu) {
+    html += `
       <article class="products__card hoodies">
         <div class="products__shape">
           <img src="${product.image}" alt="${product.name}" class="products__img">
@@ -735,15 +751,15 @@ btnCpu.addEventListener('click', ()=>{
         </div>
       </article>
     `
-    }
-    productContainer.innerHTML = html
+  }
+  productContainer.innerHTML = html
 })
 
-btnMotherCard.addEventListener('click', ()=>{
-    let html = ''
-    const tm = products.filter(product => product.category === 'tm')
-    for (const product of tm) {
-      html += `
+btnMotherCard.addEventListener('click', () => {
+  let html = ''
+  const tm = products.filter(product => product.category === 'tm')
+  for (const product of tm) {
+    html += `
       <article class="products__card hoodies">
         <div class="products__shape">
           <img src="${product.image}" alt="${product.name}" class="products__img">
@@ -761,11 +777,11 @@ btnMotherCard.addEventListener('click', ()=>{
         </div>
       </article>
     `
-    }
-    productContainer.innerHTML = html
+  }
+  productContainer.innerHTML = html
 })
 
-btnGraphics.addEventListener('click', ()=>{
+btnGraphics.addEventListener('click', () => {
   let html = ''
   const gpu = products.filter(product => product.category === 'gpu')
   for (const product of gpu) {
@@ -788,5 +804,5 @@ btnGraphics.addEventListener('click', ()=>{
     </article>
   `
   }
-  productContainer.innerHTML = html 
+  productContainer.innerHTML = html
 })
