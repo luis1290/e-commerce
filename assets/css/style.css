@@ -293,7 +293,7 @@ body.dark-theme {
 /* fin estilos de modal fuera de stock */
 
 /* estilo modal agradecimiento por compra */
-.modal__compra{
+.modal__buys{
   position: fixed;
   top: 0;
   left: 0;
@@ -308,7 +308,7 @@ body.dark-theme {
   --transition: transform .8s;
 }
 
-.modal--show-compra{
+.modal--show-buys{
   opacity: 1;
   pointer-events: unset;
   transition: opacity .6s;
@@ -316,7 +316,7 @@ body.dark-theme {
   --transition: transform .8s .8s;
 }
 
-.modal__container-compra{
+.modal__container-buys{
   margin: auto;
   width: 90%;
   max-width: 600px;
@@ -332,15 +332,15 @@ body.dark-theme {
   transition:var(--transition);
 }
 
-.modal__title-compra{
+.modal__title-buys{
   font-size: 2.5rem;
 }
 
-.modal__paragraph-compra{
+.modal__paragraph-buys{
   margin-bottom: 10px;
 }
 
-.modal__close-compra{
+.modal__close-buys{
   text-decoration: none;
   color: #fff;
   background-color: #F26250;
@@ -352,7 +352,7 @@ body.dark-theme {
   transition: background-color .3s;
 }
 
-.modal__close-compra:hover{
+.modal__close-buys:hover{
   color: #F26250;
   background-color: #fff;
 }
@@ -360,7 +360,7 @@ body.dark-theme {
 
 
 /* inicio estilado modal agotado */
-.modal__agotado{
+.modal__exhausted{
   position: fixed;
   top: 0;
   left: 0;
@@ -375,7 +375,7 @@ body.dark-theme {
   --transition: transform .8s;
 }
 
-.modal--show-agotado{
+.modal--show-exhausted{
   opacity: 1;
   pointer-events: unset;
   transition: opacity .6s;
@@ -383,7 +383,7 @@ body.dark-theme {
   --transition: transform .8s .8s;
 }
 
-.modal__container-agotado{
+.modal__container-exhausted{
   margin: auto;
   width: 90%;
   max-width: 600px;
@@ -399,15 +399,15 @@ body.dark-theme {
   transition:var(--transition);
 }
 
-.modal__title-agotado{
+.modal__title-exhausted{
   font-size: 2.5rem;
 }
 
-.modal__paragraph-agotado{
+.modal__paragraph-exhausted{
   margin-bottom: 10px;
 }
 
-.modal__close-agotado{
+.modal__close-exhausted{
   text-decoration: none;
   color: #fff;
   background-color: #F26250;
@@ -419,11 +419,12 @@ body.dark-theme {
   transition: background-color .3s;
 }
 
-.modal__close-agotado:hover{
+.modal__close-exhausted:hover{
   color: #F26250;
   background-color: #fff;
 }
 /* fin  estilado modal agotado */
+
 /* =====================fin estilado del modal =====================*/
 
 
@@ -808,7 +809,12 @@ body.dark-theme {
 
 .footer__social-link {
   font-size: 1.25rem;
-  color: var(--text-color);
+  color: var(--text-color);  
+}
+
+.bx {
+  border-radius: 10px;
+  color: #F26250;
 }
 
 .footer__social-link:hover {

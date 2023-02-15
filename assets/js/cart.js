@@ -65,9 +65,6 @@ function printProducts() {
 
 printProducts();
 
-
-
-
 // #3 Carrito
 let cart = window.localStorage.getItem("cartDB")
   ? JSON.parse(window.localStorage.getItem("cartDB"))
@@ -108,7 +105,7 @@ function printCart() {
             <i class="bx bx-trash-alt cart__amount-trash deleteToCart" data-id="${product.id
       }"></i>
             </div>
-            
+
             <span class="cart__subtotal">
             <span class="cart__stock">Quedan ${product.quantity - article.qty
       } unidades</span>
@@ -126,7 +123,6 @@ function printCart() {
   checkButtons();
   window.localStorage.setItem('cartDB', JSON.stringify(cart))
 }
-
 
 // const gpuContainer = document.getElementById("cart__container");
 printCart();
@@ -153,12 +149,13 @@ function addToCart(id, qty = 1) {
       cart.push({ id, qty });
     }
   } else {
-    const modalExhausted = document.querySelector('.modal__exhausted');
-    const closeModalExhausted = document.querySelector('.modal__close-exhausted');
-    modalExhausted.classList.add('modal--show-exhausted');
-    closeModalExhausted.addEventListener('click', (e) => {
+
+    const modal = document.querySelector('.modal__exhausted');
+    const closeModal = document.querySelector('.modal__close-exhausted');
+    modal.classList.add('modal--show-exhausted');
+    closeModal.addEventListener('click', (e) => {
       e.preventDefault();
-      closeModalExhausted.classList.remove('modal--show-exhausted');
+      modal.classList.remove('modal--show-exhausted');
     });
   }
   printCart();
@@ -169,6 +166,32 @@ function checkStock(id, qty) {
   return product.quantity - qty >= 0;
 }
 
+// funcion de mensaje de confirmacion
+function confirmRemove() {
+  let confirm = false
+  swal({
+    title: "Are you sure?",
+    text: "Once deleted, you will not be able to recover this imaginary file!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("Poof! Your imaginary file has been deleted!", {
+          icon: "success",
+
+        });
+        confirm = true
+      } else {
+        swal("Your imaginary file is safe!");
+        confirm = false
+      }
+    });
+
+  return confirm
+}
+
 // #5 Remover articulos
 function removeFromCart(id, qty = 1) {
   const article = cart.find((a) => a.id === id);
@@ -176,10 +199,22 @@ function removeFromCart(id, qty = 1) {
   if (article && article.qty - qty > 0) {
     article.qty--;
   } else {
-    const confirm = window.confirm("Estás Seguro??");
-    if (confirm) {
-      cart = cart.filter((a) => a.id !== id);
-    }
+    const confirm =
+      Swal.fire({
+        title: '¡Advertencia!',
+        text: "¿Estas seguro de eliminar este articulo?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: '¡No, Eliminar!',
+        confirmButtonText: '¡Si, Eliminar!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          cart = cart.filter((a) => a.id !== id);
+          printCart();
+        }
+      });
   }
   printCart();
 }
@@ -199,7 +234,7 @@ function totalArticles() {
 // #8 El total
 function totalAmount() {
   return cart.reduce((acc, article) => {
-    /* Primero recorre los productos, la base de datos para traer las propiedades y luego busca al producto por su id y lo hace 
+    /* Primero recorre los productos, la base de datos para traer las propiedades y luego busca al producto por su id y lo hace
     coincidir con el articulo, si lo encuntra multiplica el precio del producto por la cantidad de artículos del carrito*/
     const product = products.find((p) => p.id === article.id);
     return acc + product.price * article.qty;
@@ -222,13 +257,14 @@ function checkout() {
   clearCart();
   printProducts();
   printCart();
-  const modalCompra = document.querySelector('.modal__compra');
-  const closeModalCompra = document.querySelector('.modal__close-compra');
-  modalCompra.classList.add('modal--show-compra');
 
-  closeModalCompra.addEventListener('click', (e) => {
+  const modalBuys = document.querySelector('.modal__buys');
+  const closeModalBuys = document.querySelector('.modal__close-buys');
+  modalBuys.classList.add('modal--show-buys');
+
+  closeModalBuys.addEventListener('click', (e) => {
     e.preventDefault();
-    modalCompra.classList.remove('modal--show-compra');
+    modalBuys.classList.remove('modal--show-buys');
   });
 }
 
@@ -261,7 +297,7 @@ productContainer.addEventListener("click", function (e) {
   }
 });
 
-// agregar al carrito GPU 
+// agregar al carrito GPU
 productGpu.addEventListener("click", function (e) {
   const add = e.target.closest(".addToCartGPU");
 
@@ -289,7 +325,20 @@ cartContainer.addEventListener("click", function (e) {
 
   if (deleteCart) {
     const id = +deleteCart.dataset.id;
-    deleteFromCart(id);
+    Swal.fire({
+      title: '¡Advertencia!',
+      text: "¿Estas seguro de eliminar este articulo?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: '¡No, Eliminar!',
+      confirmButtonText: '¡Si, Eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteFromCart(id);
+      }
+    })
   }
 });
 
