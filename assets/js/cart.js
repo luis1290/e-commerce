@@ -218,7 +218,7 @@ const db = [
     image: "assets/img/RAM/teamgroup-t-force-delta-tuf-rgb-8-gb-ddr4-3200.png",
     category: "ram",
     quantity: 24,
-  },  
+  },
   {
     id: 28,
     name: "asus-rog-strix-850w-80-plus-gold",
@@ -565,6 +565,7 @@ function removeFromCart(id, qty = 1) {
 
 // #6 Eliminar del carrito
 function deleteFromCart(id) {
+  Swal.fire('Any fool can use a computer')
   const article = cart.find((a) => a.id === id);
   cart.splice(cart.indexOf(article), 1);
   printCart();
@@ -668,7 +669,9 @@ cartContainer.addEventListener("click", function (e) {
   }
 
   if (deleteCart) {
+    Swal.fire('Any fool can use a computer')
     const id = +deleteCart.dataset.id;
+ 
     Swal.fire({
       title: '¡Advertencia!',
       text: "¿Estas seguro de eliminar este articulo?",
@@ -680,9 +683,9 @@ cartContainer.addEventListener("click", function (e) {
       confirmButtonText: '¡Si, Eliminar!'
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteFromCart(id);
+         deleteFromCart(id);
       }
-    })
+    });
   }
 });
 
@@ -693,10 +696,24 @@ actionButtons.addEventListener("click", function (e) {
   const buy = e.target.closest("#cart-checkout");
 
   if (clear) {
-    clearCart();
+    Swal.fire({
+      title: '¡Advertencia!',
+      text: "¿Estas seguro de eliminar este articulo?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: '¡No, Eliminar!',
+      confirmButtonText: '¡Si, Eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        clearCart();
+      }
+    });
   }
 
   if (buy) {
     checkout();
   }
 });
+
