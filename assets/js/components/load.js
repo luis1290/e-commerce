@@ -3,6 +3,6 @@ export function load () {
   if (load) {
     setTimeout(() => {
       load.style.display = 'none'
-    }, 3000)
+    }, 1000)
   }
 }
