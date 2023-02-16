@@ -605,6 +605,7 @@ function checkout() {
   clearCart();
   printProducts();
   printCart();
+  printCategoriesCpu();
 
   const modalBuys = document.querySelector(".modal__buys");
   const closeModalBuys = document.querySelector(".modal__close-buys");
@@ -706,7 +707,7 @@ actionButtons.addEventListener("click", function (e) {
 
 const categories = document.getElementById("cpu");
 
-function printCategories() {
+function printCategoriesCpu() {
   let html = "";
   let cpu = 0;
   for (let i = 0; i < products.length; i++) {
@@ -714,13 +715,10 @@ function printCategories() {
       cpu += products[i].quantity;
     }
   }
-  console.log("Cantidad de productos en la categoría 'gpu': " + cpu);
   html += `<span id = "cpu" class="products__stock">
   ${cpu} productos
   </span>`
   categories.innerHTML = html;
-  
 }
 
-
-printCategories()
+printCategoriesCpu()
