@@ -695,6 +695,9 @@ body.dark-theme {
 
 .products__item {
   cursor: pointer;
+  border: solid 2px rgba(255, 68, 0, 0.644);
+  border-radius: 15px;
+  padding: 10px;
 }
 
 .products__title {
@@ -1149,7 +1152,7 @@ body.dark-theme {
   }
 
   .products__filters {
-
+    
     grid-template-columns: auto;
     justify-content: center;
   }
