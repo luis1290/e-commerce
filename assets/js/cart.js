@@ -705,7 +705,7 @@ actionButtons.addEventListener("click", function (e) {
   }
 });
 
-const categories = document.getElementById("cpu");
+const categoriesCpu = document.getElementById("cpu");
 
 function printCategoriesCpu() {
   let html = "";
@@ -718,7 +718,7 @@ function printCategoriesCpu() {
   html += `<span id = "cpu" class="products__stock">
   ${cpu} productos
   </span>`
-  categories.innerHTML = html;
+  categoriesCpu.innerHTML = html;
 }
 
 printCategoriesCpu()
