@@ -361,7 +361,6 @@ body.dark-theme {
 
 /* fin de modal compra */
 
-
 /* inicio estilado modal agotado */
 .modal__exhausted {
   position: fixed;
@@ -431,16 +430,13 @@ body.dark-theme {
 
 /* =====================fin estilado del modal =====================*/
 
-
 @keyframes scroll {
   0% {
     transform: translateY(0);
   }
-
   50% {
     transform: translateY(10px);
   }
-
   100% {
     transform: translateY(0);
   }
@@ -660,6 +656,12 @@ body.dark-theme {
 
 .button--small {
   padding: 1rem 1.5rem;
+}
+
+.button_modal{
+  background: rgb(187, 186, 186);
+  color: black;
+  border-radius: 5px 0 0 5px;
 }
 
 /*=============== PRODUCTS ===============*/
@@ -904,7 +906,7 @@ body.dark-theme {
   flex-direction: column;
   justify-content: flex-start;
   row-gap: 1.5rem;
-  max-height: 450px;
+  max-height: 300px;
   height: 100%;
   overflow: auto;
 }
@@ -1021,7 +1023,6 @@ body.dark-theme {
   justify-content: space-between;
   font-size: var(--small-font-size);
   margin: var(--mb-0-75) 0;
-
 }
 
 .cart__subtotal-price {
@@ -1109,7 +1110,6 @@ body.dark-theme {
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 
-
 @media screen and (max-width: 320px) {
   .container {
     margin-left: var(--mb-1);
@@ -1132,7 +1132,6 @@ body.dark-theme {
   .home__img-bg .home__img {
     width: 225px;
     height: 222px;
-
     align-items: center;
   }
 
@@ -1149,7 +1148,6 @@ body.dark-theme {
   }
 
   .products__filters {
-
     grid-template-columns: auto;
     justify-content: center;
   }
@@ -1176,7 +1174,6 @@ body.dark-theme {
     padding: 20px;
     align-items: center;
   }
-
 }
 
 
@@ -1227,10 +1224,6 @@ body.dark-theme {
     width: 100%;
   }
 
-
-
-
-
   .products__content {
     grid-template-columns: repeat(2, 200px);
     column-gap: 3rem;
@@ -1261,8 +1254,6 @@ body.dark-theme {
     padding: 20px;
     align-items: center;
   }
-
-
 }
 
 @media screen and (max-width: 767px) {
@@ -1340,7 +1331,6 @@ body.dark-theme {
   .home__data {
     padding: 0 0 3rem;
   }
-
 
   .products__filters {
     grid-template-columns: repeat(4, 200px);
