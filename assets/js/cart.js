@@ -1,6 +1,5 @@
 /* Carrito */
 
-
 // #1 Base de datos
 const db = [
   {
@@ -119,7 +118,8 @@ const db = [
     id: 15,
     name: "gigabyte-nvidia-geforce-rtx-4070-ti-gaming-oc-12gb",
     price: 1500,
-    image: "assets/img/GPU/gigabyte-nvidia-geforce-rtx-4070-ti-gaming-oc-12gb.png",
+    image:
+      "assets/img/GPU/gigabyte-nvidia-geforce-rtx-4070-ti-gaming-oc-12gb.png",
     category: "gpu",
     quantity: 6,
   },
@@ -175,7 +175,8 @@ const db = [
     id: 22,
     name: "zotac-geforce-rtx-3070-twin-edge-oc-8-gb-white-edition",
     price: 1500,
-    image: "assets/img/GPU/zotac-geforce-rtx-3070-twin-edge-oc-8-gb-white-edition.png",
+    image:
+      "assets/img/GPU/zotac-geforce-rtx-3070-twin-edge-oc-8-gb-white-edition.png",
     category: "gpu",
     quantity: 4,
   },
@@ -263,7 +264,8 @@ const db = [
     id: 33,
     name: "cooler-master-hyper-212-black-edition-silencio-fan-rgb",
     price: 99,
-    image: "assets/img/enfriamiento/cooler-master-hyper-212-black-edition-silencio-fan-rgb.png",
+    image:
+      "assets/img/enfriamiento/cooler-master-hyper-212-black-edition-silencio-fan-rgb.png",
     category: "cooler",
     quantity: 24,
   },
@@ -271,7 +273,8 @@ const db = [
     id: 34,
     name: "coolermaster-masterliquid-ml360l-v2-argb",
     price: 105,
-    image: "assets/img/enfriamiento/coolermaster-masterliquid-ml360l-v2-argb.png",
+    image:
+      "assets/img/enfriamiento/coolermaster-masterliquid-ml360l-v2-argb.png",
     category: "cooler",
     quantity: 11,
   },
@@ -311,7 +314,8 @@ const db = [
     id: 39,
     name: "ventilador-nzxt-f140-rgb-negro-pack-de-2",
     price: 115,
-    image: "assets/img/enfriamiento/ventilador-nzxt-f140-rgb-negro-pack-de-2.png",
+    image:
+      "assets/img/enfriamiento/ventilador-nzxt-f140-rgb-negro-pack-de-2.png",
     category: "cooler",
     quantity: 4,
   },
@@ -429,13 +433,15 @@ function printCart() {
         </div>
 
         <div class="cart__details">
-          <h3 class="cart__title">${product.name} <span class="cart__price">$${product.price
-      }</span></h3>
+          <h3 class="cart__title">${product.name} <span class="cart__price">$${
+      product.price
+    }</span></h3>
 
           <div class="cart__amount">
             <div class="cart__amount-content">
-              <span class="cart__amount-box removeToCart" data-id="${product.id
-      }">
+              <span class="cart__amount-box removeToCart" data-id="${
+                product.id
+              }">
                 <i class="bx bx-minus"></i>
               </span>
 
@@ -446,15 +452,18 @@ function printCart() {
               </span>
             </div>
 
-            <i class="bx bx-trash-alt cart__amount-trash deleteToCart" data-id="${product.id
-      }"></i>
+            <i class="bx bx-trash-alt cart__amount-trash deleteToCart" data-id="${
+              product.id
+            }"></i>
             </div>
 
             <span class="cart__subtotal">
-            <span class="cart__stock">Quedan ${product.quantity - article.qty
-      } unidades</span>
-            <span class="cart__subtotal-price">${product.price * article.qty
-      }</span>
+            <span class="cart__stock">Quedan ${
+              product.quantity - article.qty
+            } unidades</span>
+            <span class="cart__subtotal-price">${
+              product.price * article.qty
+            }</span>
             </span>
             </div>
             </article>
@@ -465,7 +474,7 @@ function printCart() {
   itemsCount.innerHTML = totalArticles();
   cartTotal.innerHTML = numberToCurrency(totalAmount());
   checkButtons();
-  window.localStorage.setItem('cartDB', JSON.stringify(cart))
+  window.localStorage.setItem("cartDB", JSON.stringify(cart));
 }
 
 // const gpuContainer = document.getElementById("cart__container");
@@ -480,26 +489,24 @@ function addToCart(id, qty = 1) {
       if (checkStock(id, qty + article.qty)) {
         article.qty++;
       } else {
-
-        const modal = document.querySelector('.modal');
-        const closeModal = document.querySelector('.modal__close');
-        modal.classList.add('modal--show');
-        closeModal.addEventListener('click', (e) => {
+        const modal = document.querySelector(".modal");
+        const closeModal = document.querySelector(".modal__close");
+        modal.classList.add("modal--show");
+        closeModal.addEventListener("click", (e) => {
           e.preventDefault();
-          modal.classList.remove('modal--show');
+          modal.classList.remove("modal--show");
         });
       }
     } else {
       cart.push({ id, qty });
     }
   } else {
-
-    const modal = document.querySelector('.modal__exhausted');
-    const closeModal = document.querySelector('.modal__close-exhausted');
-    modal.classList.add('modal--show-exhausted');
-    closeModal.addEventListener('click', (e) => {
+    const modal = document.querySelector(".modal__exhausted");
+    const closeModal = document.querySelector(".modal__close-exhausted");
+    modal.classList.add("modal--show-exhausted");
+    closeModal.addEventListener("click", (e) => {
       e.preventDefault();
-      modal.classList.remove('modal--show-exhausted');
+      modal.classList.remove("modal--show-exhausted");
     });
   }
   printCart();
@@ -512,28 +519,26 @@ function checkStock(id, qty) {
 
 // funcion de mensaje de confirmacion
 function confirmRemove() {
-  let confirm = false
+  let confirm = false;
   swal({
     title: "Are you sure?",
     text: "Once deleted, you will not be able to recover this imaginary file!",
     icon: "warning",
     buttons: true,
     dangerMode: true,
-  })
-    .then((willDelete) => {
-      if (willDelete) {
-        swal("Poof! Your imaginary file has been deleted!", {
-          icon: "success",
+  }).then((willDelete) => {
+    if (willDelete) {
+      swal("Poof! Your imaginary file has been deleted!", {
+        icon: "success",
+      });
+      confirm = true;
+    } else {
+      swal("Your imaginary file is safe!");
+      confirm = false;
+    }
+  });
 
-        });
-        confirm = true
-      } else {
-        swal("Your imaginary file is safe!");
-        confirm = false
-      }
-    });
-
-  return confirm
+  return confirm;
 }
 
 // #5 Remover articulos
@@ -543,29 +548,27 @@ function removeFromCart(id, qty = 1) {
   if (article && article.qty - qty > 0) {
     article.qty--;
   } else {
-    const confirm =
-      Swal.fire({
-        title: '¡Advertencia!',
-        text: "¿Estas seguro de eliminar este articulo?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: '¡No, Eliminar!',
-        confirmButtonText: '¡Si, Eliminar!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          cart = cart.filter((a) => a.id !== id);
-          printCart();
-        }
-      });
+    const confirm = Swal.fire({
+      title: "¡Advertencia!",
+      text: "¿Estas seguro de eliminar este articulo?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "¡No, Eliminar!",
+      confirmButtonText: "¡Si, Eliminar!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        cart = cart.filter((a) => a.id !== id);
+        printCart();
+      }
+    });
   }
   printCart();
 }
 
 // #6 Eliminar del carrito
 function deleteFromCart(id) {
-  Swal.fire('Any fool can use a computer')
   const article = cart.find((a) => a.id === id);
   cart.splice(cart.indexOf(article), 1);
   printCart();
@@ -603,13 +606,13 @@ function checkout() {
   printProducts();
   printCart();
 
-  const modalBuys = document.querySelector('.modal__buys');
-  const closeModalBuys = document.querySelector('.modal__close-buys');
-  modalBuys.classList.add('modal--show-buys');
+  const modalBuys = document.querySelector(".modal__buys");
+  const closeModalBuys = document.querySelector(".modal__close-buys");
+  modalBuys.classList.add("modal--show-buys");
 
-  closeModalBuys.addEventListener('click', (e) => {
+  closeModalBuys.addEventListener("click", (e) => {
     e.preventDefault();
-    modalBuys.classList.remove('modal--show-buys');
+    modalBuys.classList.remove("modal--show-buys");
   });
 }
 
@@ -652,7 +655,6 @@ productGpu.addEventListener("click", function (e) {
   }
 });
 
-
 cartContainer.addEventListener("click", function (e) {
   const remove = e.target.closest(".removeToCart");
   const add = e.target.closest(".addToCart");
@@ -669,21 +671,19 @@ cartContainer.addEventListener("click", function (e) {
   }
 
   if (deleteCart) {
-    Swal.fire('Any fool can use a computer')
     const id = +deleteCart.dataset.id;
- 
     Swal.fire({
-      title: '¡Advertencia!',
+      title: "¡Advertencia!",
       text: "¿Estas seguro de eliminar este articulo?",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      cancelButtonText: '¡No, Eliminar!',
-      confirmButtonText: '¡Si, Eliminar!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "¡No, Eliminar!",
+      confirmButtonText: "¡Si, Eliminar!",
     }).then((result) => {
       if (result.isConfirmed) {
-         deleteFromCart(id);
+        deleteFromCart(id);
       }
     });
   }
@@ -696,20 +696,7 @@ actionButtons.addEventListener("click", function (e) {
   const buy = e.target.closest("#cart-checkout");
 
   if (clear) {
-    Swal.fire({
-      title: '¡Advertencia!',
-      text: "¿Estas seguro de eliminar este articulo?",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      cancelButtonText: '¡No, Eliminar!',
-      confirmButtonText: '¡Si, Eliminar!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        clearCart();
-      }
-    });
+    clearCart();
   }
 
   if (buy) {
@@ -717,3 +704,23 @@ actionButtons.addEventListener("click", function (e) {
   }
 });
 
+const categories = document.getElementById("cpu");
+
+function printCategories() {
+  let html = "";
+  let cpu = 0;
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].category === "Procesador") {
+      cpu += products[i].quantity;
+    }
+  }
+  console.log("Cantidad de productos en la categoría 'gpu': " + cpu);
+  html += `<span id = "cpu" class="products__stock">
+  ${cpu} productos
+  </span>`
+  categories.innerHTML = html;
+  
+}
+
+
+printCategories()
