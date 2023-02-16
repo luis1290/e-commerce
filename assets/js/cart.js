@@ -1,6 +1,5 @@
 /* Carrito */
 
-
 // #1 Base de datos
 const db = [
   {
@@ -66,6 +65,7 @@ const db = [
     image: "assets/img/tm/asrock-b650-pg-lightning.png",
     category: "tm",
     quantity: 7,
+    categoryName: "Tarjeta Madre"
   },
   {
     id: 9,
@@ -119,7 +119,8 @@ const db = [
     id: 15,
     name: "gigabyte-nvidia-geforce-rtx-4070-ti-gaming-oc-12gb",
     price: 1500,
-    image: "assets/img/GPU/gigabyte-nvidia-geforce-rtx-4070-ti-gaming-oc-12gb.png",
+    image:
+      "assets/img/GPU/gigabyte-nvidia-geforce-rtx-4070-ti-gaming-oc-12gb.png",
     category: "gpu",
     quantity: 6,
   },
@@ -175,7 +176,8 @@ const db = [
     id: 22,
     name: "zotac-geforce-rtx-3070-twin-edge-oc-8-gb-white-edition",
     price: 1500,
-    image: "assets/img/GPU/zotac-geforce-rtx-3070-twin-edge-oc-8-gb-white-edition.png",
+    image:
+      "assets/img/GPU/zotac-geforce-rtx-3070-twin-edge-oc-8-gb-white-edition.png",
     category: "gpu",
     quantity: 4,
   },
@@ -218,7 +220,7 @@ const db = [
     image: "assets/img/RAM/teamgroup-t-force-delta-tuf-rgb-8-gb-ddr4-3200.png",
     category: "ram",
     quantity: 24,
-  },  
+  },
   {
     id: 28,
     name: "asus-rog-strix-850w-80-plus-gold",
@@ -263,7 +265,8 @@ const db = [
     id: 33,
     name: "cooler-master-hyper-212-black-edition-silencio-fan-rgb",
     price: 99,
-    image: "assets/img/enfriamiento/cooler-master-hyper-212-black-edition-silencio-fan-rgb.png",
+    image:
+      "assets/img/enfriamiento/cooler-master-hyper-212-black-edition-silencio-fan-rgb.png",
     category: "cooler",
     quantity: 24,
   },
@@ -271,7 +274,8 @@ const db = [
     id: 34,
     name: "coolermaster-masterliquid-ml360l-v2-argb",
     price: 105,
-    image: "assets/img/enfriamiento/coolermaster-masterliquid-ml360l-v2-argb.png",
+    image:
+      "assets/img/enfriamiento/coolermaster-masterliquid-ml360l-v2-argb.png",
     category: "cooler",
     quantity: 11,
   },
@@ -311,7 +315,8 @@ const db = [
     id: 39,
     name: "ventilador-nzxt-f140-rgb-negro-pack-de-2",
     price: 115,
-    image: "assets/img/enfriamiento/ventilador-nzxt-f140-rgb-negro-pack-de-2.png",
+    image:
+      "assets/img/enfriamiento/ventilador-nzxt-f140-rgb-negro-pack-de-2.png",
     category: "cooler",
     quantity: 4,
   },
@@ -385,7 +390,7 @@ function printProducts() {
   let html = "";
   for (const product of products) {
     html += `
-    <article class="products__card hoodies">
+    <article class="products__card mix ${product.category}">
       <div class="products__shape">
         <img src="${product.image}" alt="${product.name}" class="products__img">
       </div>
@@ -429,13 +434,15 @@ function printCart() {
         </div>
 
         <div class="cart__details">
-          <h3 class="cart__title">${product.name} <span class="cart__price">$${product.price
-      }</span></h3>
+          <h3 class="cart__title">${product.name} <span class="cart__price">$${
+      product.price
+    }</span></h3>
 
           <div class="cart__amount">
             <div class="cart__amount-content">
-              <span class="cart__amount-box removeToCart" data-id="${product.id
-      }">
+              <span class="cart__amount-box removeToCart" data-id="${
+                product.id
+              }">
                 <i class="bx bx-minus"></i>
               </span>
 
@@ -446,15 +453,18 @@ function printCart() {
               </span>
             </div>
 
-            <i class="bx bx-trash-alt cart__amount-trash deleteToCart" data-id="${product.id
-      }"></i>
+            <i class="bx bx-trash-alt cart__amount-trash deleteToCart" data-id="${
+              product.id
+            }"></i>
             </div>
 
             <span class="cart__subtotal">
-            <span class="cart__stock">Quedan ${product.quantity - article.qty
-      } unidades</span>
-            <span class="cart__subtotal-price">${product.price * article.qty
-      }</span>
+            <span class="cart__stock">Quedan ${
+              product.quantity - article.qty
+            } unidades</span>
+            <span class="cart__subtotal-price">${
+              product.price * article.qty
+            }</span>
             </span>
             </div>
             </article>
@@ -465,7 +475,7 @@ function printCart() {
   itemsCount.innerHTML = totalArticles();
   cartTotal.innerHTML = numberToCurrency(totalAmount());
   checkButtons();
-  window.localStorage.setItem('cartDB', JSON.stringify(cart))
+  window.localStorage.setItem("cartDB", JSON.stringify(cart));
 }
 
 // const gpuContainer = document.getElementById("cart__container");
@@ -480,26 +490,24 @@ function addToCart(id, qty = 1) {
       if (checkStock(id, qty + article.qty)) {
         article.qty++;
       } else {
-
-        const modal = document.querySelector('.modal');
-        const closeModal = document.querySelector('.modal__close');
-        modal.classList.add('modal--show');
-        closeModal.addEventListener('click', (e) => {
+        const modal = document.querySelector(".modal");
+        const closeModal = document.querySelector(".modal__close");
+        modal.classList.add("modal--show");
+        closeModal.addEventListener("click", (e) => {
           e.preventDefault();
-          modal.classList.remove('modal--show');
+          modal.classList.remove("modal--show");
         });
       }
     } else {
       cart.push({ id, qty });
     }
   } else {
-
-    const modal = document.querySelector('.modal__exhausted');
-    const closeModal = document.querySelector('.modal__close-exhausted');
-    modal.classList.add('modal--show-exhausted');
-    closeModal.addEventListener('click', (e) => {
+    const modal = document.querySelector(".modal__exhausted");
+    const closeModal = document.querySelector(".modal__close-exhausted");
+    modal.classList.add("modal--show-exhausted");
+    closeModal.addEventListener("click", (e) => {
       e.preventDefault();
-      modal.classList.remove('modal--show-exhausted');
+      modal.classList.remove("modal--show-exhausted");
     });
   }
   printCart();
@@ -512,28 +520,26 @@ function checkStock(id, qty) {
 
 // funcion de mensaje de confirmacion
 function confirmRemove() {
-  let confirm = false
+  let confirm = false;
   swal({
     title: "Are you sure?",
     text: "Once deleted, you will not be able to recover this imaginary file!",
     icon: "warning",
     buttons: true,
     dangerMode: true,
-  })
-    .then((willDelete) => {
-      if (willDelete) {
-        swal("Poof! Your imaginary file has been deleted!", {
-          icon: "success",
+  }).then((willDelete) => {
+    if (willDelete) {
+      swal("Poof! Your imaginary file has been deleted!", {
+        icon: "success",
+      });
+      confirm = true;
+    } else {
+      swal("Your imaginary file is safe!");
+      confirm = false;
+    }
+  });
 
-        });
-        confirm = true
-      } else {
-        swal("Your imaginary file is safe!");
-        confirm = false
-      }
-    });
-
-  return confirm
+  return confirm;
 }
 
 // #5 Remover articulos
@@ -543,22 +549,21 @@ function removeFromCart(id, qty = 1) {
   if (article && article.qty - qty > 0) {
     article.qty--;
   } else {
-    const confirm =
-      Swal.fire({
-        title: '¡Advertencia!',
-        text: "¿Estas seguro de eliminar este articulo?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: '¡No, Eliminar!',
-        confirmButtonText: '¡Si, Eliminar!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          cart = cart.filter((a) => a.id !== id);
-          printCart();
-        }
-      });
+    const confirm = Swal.fire({
+      title: "¡Advertencia!",
+      text: "¿Estas seguro de eliminar este articulo?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "¡No, Eliminar!",
+      confirmButtonText: "¡Si, Eliminar!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        cart = cart.filter((a) => a.id !== id);
+        printCart();
+      }
+    });
   }
   printCart();
 }
@@ -601,14 +606,16 @@ function checkout() {
   clearCart();
   printProducts();
   printCart();
+  countProducts();
 
-  const modalBuys = document.querySelector('.modal__buys');
-  const closeModalBuys = document.querySelector('.modal__close-buys');
-  modalBuys.classList.add('modal--show-buys');
+  const modalBuys = document.querySelector(".modal__buys");
+  const closeModalBuys = document.querySelector(".modal__close-buys");
+  modalBuys.classList.add("modal--show-buys");
 
-  closeModalBuys.addEventListener('click', (e) => {
+  closeModalBuys.addEventListener("click", (e) => {
     e.preventDefault();
     modalBuys.classList.remove('modal--show-buys');
+    location.reload();
   });
 }
 
@@ -651,7 +658,6 @@ productGpu.addEventListener("click", function (e) {
   }
 });
 
-
 cartContainer.addEventListener("click", function (e) {
   const remove = e.target.closest(".removeToCart");
   const add = e.target.closest(".addToCart");
@@ -670,19 +676,19 @@ cartContainer.addEventListener("click", function (e) {
   if (deleteCart) {
     const id = +deleteCart.dataset.id;
     Swal.fire({
-      title: '¡Advertencia!',
+      title: "¡Advertencia!",
       text: "¿Estas seguro de eliminar este articulo?",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      cancelButtonText: '¡No, Eliminar!',
-      confirmButtonText: '¡Si, Eliminar!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "¡No, Eliminar!",
+      confirmButtonText: "¡Si, Eliminar!",
     }).then((result) => {
       if (result.isConfirmed) {
         deleteFromCart(id);
       }
-    })
+    });
   }
 });
 
@@ -700,3 +706,60 @@ actionButtons.addEventListener("click", function (e) {
     checkout();
   }
 });
+
+
+const container = document.getElementById('container__categories')
+
+function countProducts() {
+  const obj = {}
+  const namesCategories = ['Procesador','Tarjeta Madre','Grafica','Ram','Power','Enfriamiento','Case','Almacenamiento']
+  for(let i = 0; i < products.length; i++){
+    let num = products[i].quantity
+    if(obj[products[i].category]){
+        obj[products[i].category] += num
+    }else{
+        obj[products[i].category] = num
+    }
+  }
+  const arr = Object.entries(obj)
+  for(let j = 0; j < namesCategories.length; j++) {
+    arr[j].push(namesCategories[j])
+  }
+  console.log(arr)
+  let html = `
+    <li class="products__item products__line filter" data-filter="all">
+    <h3 class="products__title">
+      Mostrar todo
+    </h3>
+    <span class="products__stock">
+      Mostrar todos los productos
+    </span>
+    </li>
+  `
+  for (const item of arr) {
+    html += `
+    <li class="products__item products__line filter" data-filter=".${item[0]}">
+      <h3 class="products__title">
+        ${item[2]}
+      </h3>
+      <span class="products__stock">
+        ${item[1]} productos
+      </span>
+    </li>
+    `
+  }
+  container.innerHTML = html
+}
+
+
+countProducts()
+
+function closeCart(){
+  const btnBuy = document.getElementById('cart-checkout')
+  const cart = document.getElementById('cart')
+  btnBuy.addEventListener('click', ()=>{
+    cart.classList.remove('show-cart')
+  })
+}
+
+closeCart()
