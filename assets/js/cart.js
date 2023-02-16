@@ -66,6 +66,7 @@ const db = [
     image: "assets/img/tm/asrock-b650-pg-lightning.png",
     category: "tm",
     quantity: 7,
+    categoryName: "Tarjeta Madre"
   },
   {
     id: 9,
@@ -601,6 +602,7 @@ function checkout() {
   clearCart();
   printProducts();
   printCart();
+  countProducts();
 
   const modalBuys = document.querySelector('.modal__buys');
   const closeModalBuys = document.querySelector('.modal__close-buys');
@@ -609,6 +611,7 @@ function checkout() {
   closeModalBuys.addEventListener('click', (e) => {
     e.preventDefault();
     modalBuys.classList.remove('modal--show-buys');
+    location.reload();
   });
 }
 
@@ -700,3 +703,62 @@ actionButtons.addEventListener("click", function (e) {
     checkout();
   }
 });
+
+const container = document.getElementById('container__categories')
+
+function countProducts() {
+  const obj = {}
+  const namesCategories = ['Procesador','Tarjeta Madre','Grafica','Ram','Power','Enfriamiento','Case','Almacenamiento']
+  for(let i = 0; i < products.length; i++){
+    let num = products[i].quantity
+    if(obj[products[i].category]){
+        obj[products[i].category] += num
+    }else{
+        obj[products[i].category] = num
+    }
+  }
+  const arr = Object.entries(obj)
+  for(let j = 0; j < namesCategories.length; j++) {
+    arr[j].push(namesCategories[j])
+  }
+  console.log(arr)
+  let html = `
+    <li class="products__item products__line filter" data-filter="all">
+    <h3 class="products__title">
+      Mostrar todo
+    </h3>
+    <span class="products__stock">
+      Mostrar todos los productos
+    </span>
+    </li>
+  `
+  for (const item of arr) {
+    html += `
+    <li class="products__item products__line filter" data-filter=".${item[0]}">
+      <h3 class="products__title">
+        ${item[2]}
+      </h3>
+      <span class="products__stock">
+        ${item[1]} productos
+      </span>
+    </li>
+    `
+  }
+  container.innerHTML = html
+}
+
+
+countProducts()
+
+function closeCart(){
+  const btnBuy = document.getElementById('cart-checkout')
+  const cart = document.getElementById('cart')
+  btnBuy.addEventListener('click', ()=>{
+    cart.classList.remove('show-cart')
+  })
+}
+
+closeCart()
+
+
+

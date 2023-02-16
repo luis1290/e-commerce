@@ -150,42 +150,8 @@ L82,35.7z">
     <!--==================== PRODUCTS ====================-->
     <section class="products" id="products">
       <div class="products__container container">
-        <ul class="products__filters">
-          <li class="products__item products__line filter" data-filter="all">
-            <h3 class="products__title">
-              Mostrar todo
-            </h3>
-            <span class="products__stock">
-              Mostrar todos los productos
-            </span>
-          </li>
-
-          <li class="products__item products__line active-product filter" data-filter=".Procesador">
-            <h3 class="products__title">
-              Procesadores
-            </h3>
-            <span class="products__stock">
-              3 productos
-            </span>
-          </li>
-
-          <li class="products__item products__line filter" data-filter=".tm">
-            <h3 class="products__title">
-              Tarjetas Madres
-            </h3>
-            <span class="products__stock">
-              4 productos
-            </span>
-          </li>
-
-          <li class="products__item filter" data-filter=".gpu">
-            <h3 class="products__title">
-              Graficas
-            </h3>
-            <span class="products__stock">
-              4 productos
-            </span>
-          </li>
+        
+        <ul class="products__filters" id="container__categories">
         </ul>
 
         <div class="products__content grid" id="products__content">
@@ -315,13 +281,13 @@ L82,35.7z">
     <i class='bx bx-up-arrow-alt scrollup__icon'></i>
   </a>
 
+  <!--=============== MAIN JS ===============-->
+  <script src="assets/js/cart.js" type="module"></script>
+  <script src="assets/js/main.js" type="module"></script>
+
   <!--=============== MIXITUP FILTER ===============-->
   <script src="assets/js/helpers/mixitup.min.js"></script>
-
-  <!--=============== MAIN JS ===============-->
-  <script src="assets/js/main.js" type="module"></script>
-  <script src="assets/js/cart.js"></script>
-
+  
  <!--=============== https://sweetalert.js.org/ ===============-->
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
