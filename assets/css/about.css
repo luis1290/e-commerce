@@ -371,7 +371,6 @@ body.dark-theme {
 .cs {
   display: flex;
   margin-top: 150px;
-  margin-left: 50px;
   margin-bottom: 5px;
   justify-content: center;
   width: 100%;
@@ -640,17 +639,25 @@ body.dark-theme {
   color: var(--text-color-light);
 }
 
+.autor a{
+  color: #706f73;
+}
 
+
+/*=============== BREAKPOINTS ==
+    /*ABOUT */
 @media screen and (max-width: 767px) {
-
-  /*ABOUT */
   .img {
     margin-left: 30px;
   }
 
   .img2 {
-    margin-left: 72px;
-    margin-top: 450px;
+    margin-left: auto;
+    margin-top: 100px;
+  }
+
+  .we {
+    text-align: center;
   }
 
   .img3 {
@@ -658,16 +665,20 @@ body.dark-theme {
   }
 
   .title1 {
-    margin-top: 5px;
-    margin-left: 40px;
-    margin-right: 230px;
+    width: 100%;
+    text-align: center;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
     margin-bottom: 250px;
     border-bottom: 2px solid var(--first-color);
   }
 
   .title2 {
+    text-align: center;
+    width: 100%;
     margin-top: 5px;
-    margin-left: 90px;
+    margin-left: 0px;
     margin-bottom: 50px;
     border-bottom: 2px solid var(--first-color);
     margin-right: 180px;
@@ -675,18 +686,21 @@ body.dark-theme {
 
   .title3 {
     margin-top: 5px;
-    margin-left: 90px;
+    margin-left: 60px;
     margin-bottom: 50px;
     border-bottom: 2px solid var(--first-color);
     margin-right: 50px;
+    font-size: small;
   }
 
   .cs {
     display: flex;
     margin-top: 150px;
-    margin-left: 50px;
-    width: 100%;
-    height: 300px;
+    margin-left: 0px;
+    width: 100vw;
+    height: auto;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
   }
 
@@ -716,13 +730,17 @@ body.dark-theme {
   .country {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: auto;
     height: auto;
     justify-content: space-evenly;
     gap: 15px;
     align-content: stretch;
     align-items: center;
     border-bottom: 2px solid var(--first-color);
+  }
+
+  .country2 {
+    border-right: 2px solid var(--first-color);
   }
 
   .country p {
@@ -749,7 +767,7 @@ body.dark-theme {
   .group {
     margin-top: 100px;
     display: flex;
-    width: 90%;
+    width: 100%;
     height: 500px;
     flex-direction: column;
   }
@@ -765,8 +783,8 @@ body.dark-theme {
 
   .autor p {
     display: flex;
-    border-right: 1px solid rgb(249, 9, 9);
-    border-bottom: 1px solid rgb(249, 9, 9);
+    border-right: 1px solid var(--first-color);
+    border-bottom: 1px solid var(--first-color);
     width: 190px;
     height: 50px;
     border-radius: 1px;
@@ -784,6 +802,7 @@ body.dark-theme {
 }
 
 /*=============== BREAKPOINTS ===============*/
+/* For small devices */
 /* For small devices */
 
 
