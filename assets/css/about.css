@@ -330,11 +330,13 @@ body.dark-theme {
 /****************************** INDEX 2   ****************/
 .img {
   margin-left: 80px;
+  margin-top: 120px;
 }
 
 .img2 {
   margin-left: 72px;
   margin-bottom: 5px;
+  margin-top: 100px;
 }
 
 .img3 {
