@@ -699,7 +699,20 @@ actionButtons.addEventListener("click", function (e) {
   const buy = e.target.closest("#cart-checkout");
 
   if (clear) {
-    clearCart();
+    Swal.fire({
+      title: '¡Advertencia!',
+      text: "¿Estas seguro de eliminar este articulo?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085D6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: '¡No, Eliminar!',
+      confirmButtonText: '¡Si, Eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        clearCart();
+      }
+    });
   }
 
   if (buy) {
